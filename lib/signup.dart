@@ -1,298 +1,162 @@
-import 'package:ekubapp/signup.dart';
-import 'package:ekubapp/them.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'homepage.dart';
 import 'main.dart';
-import 'signup.dart';
 
-//Widget for input
-
-class SignUpWidget extends StatefulWidget {
-  @override
-  SignUpState createState() {
-    return SignUpState();
-  }
-}
-
-class SignUpState extends State<SignUpWidget> {
-  final FocusNode focusPhone = FocusNode();
-  final FocusNode focusPIN = FocusNode();
-  final FocusNode focusName = FocusNode();
-  final FocusNode focusConfirmphoneN = FocusNode();
-
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController pinController = TextEditingController();
-  final TextEditingController confirmphonenController = TextEditingController();
-
+class SignupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Container(
-      padding: EdgeInsets.only(top: 30.0),
-      child: Column(
-        children: <Widget>[
-          Stack(
-            alignment: Alignment.topCenter,
-            //overflow: Overflow.visible,
-            children: <Widget>[
-              Card(
-                elevation: 2.0,
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0)),
-                child: Container(
-                  width: 360.00,
-                  height: 480.00,
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
-                        child: TextField(
-                          focusNode: focusName,
-                          controller: nameController,
-                          keyboardType: TextInputType.emailAddress,
-                          style: const TextStyle(
-                              fontFamily: "SignikaSemiBold",
-                              fontSize: 16.0,
-                              color: Colors.black),
-                          decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              icon: Icon(
-                                FontAwesomeIcons.envelope,
-                                color: Colors.black,
-                                size: 22.0,
-                              ),
-                              hintText: "Enter name",
-                              hintStyle: TextStyle(
-                                  fontFamily: "SignikaSemiBold",
-                                  fontSize: 18.0)),
-                        ),
-                      ),
-                      Container(
-                        width: 250.0,
-                        height: 1.0,
-                        color: Colors.grey,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
-                        child: TextField(
-                          focusNode: focusPhone,
-                          controller: phoneController,
-                          keyboardType: TextInputType.emailAddress,
-                          style: const TextStyle(
-                              fontFamily: "SignikaSemiBold",
-                              fontSize: 16.0,
-                              color: Colors.black),
-                          decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              icon: Icon(
-                                FontAwesomeIcons.envelope,
-                                color: Colors.black,
-                                size: 22.0,
-                              ),
-                              hintText: "Enter phone",
-                              hintStyle: TextStyle(
-                                  fontFamily: "SignikaSemiBold",
-                                  fontSize: 18.0)),
-                        ),
-                      ),
-                      Container(
-                        width: 250.0,
-                        height: 1.0,
-                        color: Colors.grey,
-                      ),
-                      // Padding(
-                      //  padding: const EdgeInsets.only(
-                      //      top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
-                      //   child: TextField(
-                      //     focusNode: focusPIN,
-                      //     controller: pinController,
-                      //     style: const TextStyle(
-                      //         fontFamily: "SignikaSemiBold",
-                      //         fontSize: 16.0,
-                      //         color: Colors.black),
-                      //     decoration: const InputDecoration(
-                      //         border: InputBorder.none,
-                      //         icon: Icon(
-                      //           FontAwesomeIcons.lock,
-                      //           color: Colors.black,
-                      //           size: 22.0,
-                      //         ),
-                      //         hintText: "Enter password",
-                      //         hintStyle: TextStyle(
-                      //             fontFamily: "SignikaSemiBold",
-                      //             fontSize: 18.0)),
-                      //   ),
-                      // ),
-                      // Container(
-                      //   width: 250.0,
-                      //   height: 1.0,
-                      //   color: Colors.grey,
-                      // ),
-                      // Padding(
-                      //   padding: const EdgeInsets.only(
-                      //       top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
-                      //   child: TextField(
-                      //     focusNode: focusPhone,
-                      //     controller: PINController,
-                      //     style: const TextStyle(
-                      //         fontFamily: "SignikaSemiBold",
-                      //         fontSize: 16.0,
-                      //         color: Colors.black),
-                      //     decoration: const InputDecoration(
-                      //         border: InputBorder.none,
-                      //         icon: Icon(
-                      //           FontAwesomeIcons.lock,
-                      //           color: Colors.black,
-                      //           size: 22.0,
-                      //         ),
-                      //         hintText: "Confirm password",
-                      //         hintStyle: TextStyle(
-                      //             fontFamily: "SignikaSemiBold",
-                      //             fontSize: 18.0)),
-                      //   ),
-                      // ),
-                      Container(
-                        width: 250.0,
-                        height: 1.0,
-                        color: Colors.grey,
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 40.0),
-                        decoration: const BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(5.0)),
-                            boxShadow: <BoxShadow>[
-                              BoxShadow(
-                                  color: Color.fromARGB(255, 51, 138, 70),
-                                  offset: Offset(1.0, 6.0),
-                                  blurRadius: 20.0),
-                              BoxShadow(
-                                  color: Color.fromARGB(255, 32, 136, 79),
-                                  offset: Offset(1.0, 6.0),
-                                  blurRadius: 20.0),
-                            ],
-                            gradient: LinearGradient(
-                                colors: [
-                                  Color.fromARGB(255, 28, 137, 66),
-                                  Color.fromARGB(255, 41, 136, 62)
-                                ],
-                                begin: FractionalOffset(0.2, 0.2),
-                                end: FractionalOffset(1.0, 1.0),
-                                stops: [0.1, 1.0],
-                                tileMode: TileMode.clamp)),
-                        child: MaterialButton(
-                          highlightColor: Colors.transparent,
-                          splashColor: AppColours.colorEnd,
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 10.0, horizontal: 42.0),
-                            child: Text(
-                              "Sign Up",
-                              style: TextStyle(
-                                  fontFamily: "SignikaSemiBold",
-                                  color: Colors.white,
-                                  fontSize: 22.0),
-                            ),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0,
+        brightness: Brightness.light,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => StartPage()));
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              size: 20,
+              color: Colors.black,
+            )),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        const Text(
+                          "Sign up",
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
                           ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          "Create an Account,Its free",
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.grey[700],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        )
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: Column(
+                        children: [
+                          makeInput(label: "Phone Number"),
+                          makeInput(label: "Password", obsureText: true),
+                          //makeInput(label: "Confirm Pasword", obsureText: true)
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: Container(
+                        padding: const EdgeInsets.only(top: 3, left: 3),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            border: const Border(
+                                bottom: BorderSide(color: Colors.black38),
+                                top: BorderSide(color: Colors.black38),
+                                right: BorderSide(color: Colors.black38),
+                                left: BorderSide(color: Colors.black38))),
+                        child: MaterialButton(
+                          minWidth: double.infinity,
+                          height: 50,
                           onPressed: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => MyHomePage()));
+                                    builder: (context) => HomePage()));
                           },
+                          color: Color.fromARGB(255, 102, 227, 106),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30)),
+                          child: const Text(
+                            "Sign Up",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                            ),
+                          ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            const Text('Already Registerd?',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                )),
-                            TextButton(
-                              child: const Text(
-                                'Login',
-                                style: TextStyle(fontSize: 20),
-                              ),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => MyApp()));
-                              },
-                            )
-                          ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: <Widget>[
+                        const Text("Already have an account? "),
+                        const Text(
+                          "Login",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600, fontSize: 18),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [
-                          Colors.white10,
-                          Colors.white,
-                        ],
-                        begin: FractionalOffset(0.0, 0.0),
-                        end: FractionalOffset(1.0, 1.0),
-                        stops: [0.0, 1.0],
-                        tileMode: TileMode.clamp),
-                  ),
-                  width: 100.0,
-                  height: 1.0,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 15.0, right: 15.0),
-                  child: Text(
-                    "OR",
-                    style: TextStyle(
-                        color: Colors.white,
-                        decoration: TextDecoration.none,
-                        fontSize: 16.0,
-                        fontFamily: "WorkSansMedium"),
-                  ),
-                ),
-                Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [
-                          Colors.white,
-                          Colors.white10,
-                        ],
-                        begin: FractionalOffset(0.0, 0.0),
-                        end: FractionalOffset(1.0, 1.0),
-                        stops: [0.0, 1.0],
-                        tileMode: TileMode.clamp),
-                  ),
-                  width: 100.0,
-                  height: 1.0,
+                      ],
+                    )
+                  ],
                 ),
               ],
             ),
           ),
-        ],
+        ),
       ),
-    ));
+    );
   }
 }
 
-class PINController {}
-
-class PhoneNumber {}
+Widget makeInput({label, obsureText = false}) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        label,
+        style: const TextStyle(
+            fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black38),
+      ),
+      const SizedBox(
+        height: 5,
+      ),
+      TextField(
+        obscureText: obsureText,
+        decoration: const InputDecoration(
+          contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                //color: Colors.grey[400],
+                ),
+          ),
+          border: OutlineInputBorder(
+              // borderSide: BorderSide(color: Colors.grey[400])
+              ),
+        ),
+      ),
+      const SizedBox(
+        height: 20,
+      )
+    ],
+  );
+}

@@ -3,15 +3,10 @@
 import 'package:ekubapp/signup.dart';
 import 'package:flutter/material.dart';
 
-import 'homepage.dart';
-import 'newcard.dart';
+void main() => runApp(const StartPage());
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  //static const String _title = 'Language';
+class StartPage extends StatelessWidget {
+  const StartPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +17,6 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.transparent,
           elevation: 0,
           iconTheme: IconThemeData(color: Colors.black),
-          // title: const Text(
-          //   'Language',
-          //   style: TextStyle(color: Colors.black),
-          // ),
           centerTitle: true,
           actions: [
             Center(
@@ -68,8 +59,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         child: ListView(
           children: <Widget>[
             Column(
-              //alignment: Alignment.center,
-              //padding: const EdgeInsets.all(10),
               children: [
                 Image.asset("assets/photo_large.jpg"),
                 const Text(
@@ -80,11 +69,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 )
               ],
             ),
-            //style: TextStyle(
-            //  color: Colors.blue,
-            // fontWeight: FontWeight.w500,
-            //fontSize: 30),
-
             Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
@@ -114,9 +98,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
             ),
             TextButton(
-              onPressed: () {
-                //forgot password screen
-              },
+              onPressed: () {},
               child: const Text(
                 'Forgot PIN',
               ),
@@ -141,10 +123,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SignUpWidget()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignupPage()));
                   },
                 )
               ],
