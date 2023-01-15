@@ -1,12 +1,35 @@
 // ignore_for_file: prefer_const_constructors
-
-import 'package:ekubapp/signup.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ekubapp/homepage.dart';
+import 'package:ekubapp/Registr/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:ekubapp/signup.dart';
 
-void main() => runApp(const StartPage());
+import 'firebase_options.dart';
 
-class StartPage extends StatelessWidget {
-  const StartPage({Key? key}) : super(key: key);
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  if (kDebugMode) {
+    try {
+      FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+      await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+    } catch (e) {
+      // ignore: avoid_print
+      print(e);
+    }
+  }
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -123,8 +146,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SignupPage()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FirebaseAuthDemo()));
                   },
                 )
               ],

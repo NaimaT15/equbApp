@@ -1,17 +1,23 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'MyBottomNavBar.dart';
 import 'popularEqub.dart';
 import 'signup.dart';
+import 'Registr/login.dart';
 
 void main() {
   runApp(HomePage());
 }
 
 class HomePage extends StatelessWidget {
+  // String? user_id;
+  // HomePage({this.user_id});
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,13 +32,20 @@ class HomePage extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String? uid;
+  getEkubetegnID() {
+    final userCollection = FirebaseFirestore.instance.collection("users");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SignupPage()));
+                  MaterialPageRoute(builder: (context) => FirebaseAuthDemo()));
             },
           )
         ],
@@ -168,8 +181,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     '0Birr',
                     style: TextStyle(color: Colors.black, fontSize: 30),
                   ),
-                  const Text(
-                    'Equbtegna - 6077963821996',
+                  Text(
+                    (uid!),
                     style: TextStyle(
                         color: Color.fromARGB(255, 180, 160, 160),
                         fontSize: 15),
@@ -333,5 +346,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ]),
     );
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    uid = FirebaseAuth.instance.currentUser!.uid;
   }
 }

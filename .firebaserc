@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "ekub-app",
+    "staging": "ekub-app"
+  },
+  "targets": {},
+  "etags": {}
+}
